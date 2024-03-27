@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  - var image_names = ['Mineral1', 'Mineral2', 'Mineral3', 'Mineral4', 'Mineral5']
+  - var height = 200
+  - var width = 200
+  - var displayedImages = []
+  while displayedImages.length < 3
+    - var randomIndex = Math.floor(Math.random() * 5)
+    - var randomImage = image_names[randomIndex]
+    - if (!displayedImages.includes(randomImage))
+      - displayedImages.push(randomImage)
+      img(
+        src=`/images/${randomImage}.jpg`,
+        alt=`${randomImage}`,
+        height=height,
+        width=width
+      )
