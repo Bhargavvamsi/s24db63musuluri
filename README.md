@@ -6,4 +6,5 @@ My Pug learning by Bhargav Vamsi Musuluri
 
 [Minerals](https://s24wb63musuluri.onrender.com/minerals)  
 [Grid](https://s24wb63musuluri.onrender.com/grid?rows=5&cols=6)  
-[RandomImage](https://s24wb63musuluri.onrender.com/pick)
+[RandomImage](https://s24wb63musuluri.onrender.com/pick)  
+[New Render](https://s24db63musuluri.onrender.com)
