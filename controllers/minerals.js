@@ -43,16 +43,16 @@ exports.minerals_view_all_Page = async function(req, res) {
     } 
    };
    // Handle Costume create on POST.
-exports.costume_create_post = async function(req, res) {
+exports.minerals_create_post = async function(req, res) {
     console.log(req.body)
-    let document = new Costume();
+    let document = new minerals();
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
     // {"costume_type":"goat", "cost":12, "size":"large"}
-    document.costume_type = req.body.costume_type;
-    document.cost = req.body.cost;
-    document.size = req.body.size;
+    document.Mineral_name = req.body.Mineral_name;
+    document.Color = req.body.Color;
+    document.Hardness_level = req.body.Hardness_level;
     try{
     let result = await document.save();
     res.send(result);
@@ -61,4 +61,4 @@ exports.costume_create_post = async function(req, res) {
     res.status(500);
     res.send(`{"error": ${err}}`);
     } 
-   }
+   };
