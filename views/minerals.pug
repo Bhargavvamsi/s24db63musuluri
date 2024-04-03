@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  - let results = [{ Mineral_name: 'Quartz', Color: 'white', Hardness_level: 7 },{ Mineral_name: 'Beryl', Color: 'blue (aquamarine)', Hardness_level:  7.5 },{ Mineral_name: 'Gypsum', Color: 'yellow', Hardness_level: 2}]
+  - let minerals = results 
 
   .container-fluid
     .row
-      each item, index in results
+      each item, index in minerals
         .col-sm-4
           .instrument(onclick=`buy(${index})`)
             h3 #{item.Mineral_name}

@@ -7,3 +7,9 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+var express = require('express');
+const minerals_controlers= require('../controllers/minerals');
+var router = express.Router();
+/* GET costumes */
+router.get('/', minerals_controlers.minerals_view_all_Page);
+module.exports = router;
