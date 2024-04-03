@@ -19,3 +19,14 @@ exports.minerals_delete = function(req, res) {
 exports.minerals_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: Minerals update PUT' + req.params.id);
 };
+// List of all mineralss
+exports.minerals_list = async function(req, res) {
+    try{
+    theminerals = await minerals.find();
+    res.send(theminerals);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    } 
+   };
