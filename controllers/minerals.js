@@ -42,14 +42,14 @@ exports.minerals_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     } 
    };
-   // Handle Costume create on POST.
+   // Handle minerals create on POST.
 exports.minerals_create_post = async function(req, res) {
     console.log(req.body)
     let document = new minerals();
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
-    // {"costume_type":"goat", "cost":12, "size":"large"}
+    // {"minerals_type":"goat", "cost":12, "size":"large"}
     document.Mineral_name = req.body.Mineral_name;
     document.Color = req.body.Color;
     document.Hardness_level = req.body.Hardness_level;
@@ -62,3 +62,34 @@ exports.minerals_create_post = async function(req, res) {
     res.send(`{"error": ${err}}`);
     } 
    };
+   // for a specific minerals.
+exports.minerals_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await minerals.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+   };
+   // Handle minerals update form on PUT.
+exports.minerals_update_put = async function(req, res) {
+ console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`)
+ try {
+ let toUpdate = await minerals.findById( req.params.id)
+ // Do updates of properties
+ if(req.body.Mineral_name) 
+ toUpdate.Mineral_name = req.body.Mineral_name;
+ if(req.body.Color) toUpdate.Color = req.body.Color;
+ if(req.body.Hardness_level) toUpdate.Hardness_level = req.body.Hardness_level;
+ let result = await toUpdate.save();
+ console.log("Sucess " + result)
+ res.send(result)
+ } catch (err) {
+ res.status(500)
+ res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`);
+ }
+};
