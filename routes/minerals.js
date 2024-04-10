@@ -14,4 +14,6 @@ var router = express.Router();
 router.get('/', minerals_controlers.minerals_view_all_Page);
 /* GET detail minerals page */
 router.get('/detail', minerals_controlers.minerals_view_one_Page);
+/* GET create minerals page */
+router.get('/create', minerals_controlers.minerals_create_Page);
 module.exports = router;
