@@ -18,4 +18,6 @@ router.get('/detail', minerals_controlers.minerals_view_one_Page);
 router.get('/create', minerals_controlers.minerals_create_Page);
 /* GET create update page */
 router.get('/update', minerals_controlers.minerals_update_Page);
+/* GET delete costume page */
+router.get('/delete', minerals_controlers.minerals_delete_Page);
 module.exports = router;

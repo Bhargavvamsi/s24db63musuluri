@@ -1,0 +1,55 @@
+extends layout
+ 
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let mineralsid = toShow._id
+    - let Mineral_name = toShow.Mineral_name
+    - let Color = toShow.Color
+    - let Hardness_level = toShow.Hardness_level
+    - let actionid = "/resource/minerals/" + mineralsid
+ 
+    script.
+      let actionid = "#{actionid}"
+   
+    div
+      div.row
+        div(class='mineralsAttr mr-3') minerals ID is:
+        div #{watercraftid}
+      div.row
+        div(class='mineralsAttr mr-3') Mineral_name is:
+        div #{Mineral_name}
+      div.row
+        div(class='mineralsAttr mr-3') Mineral Color is:
+        div #{Color}
+      div.row
+        div(class='mineralstAttr mr-3') Hardness_level is:
+        div #{Hardness_level}
+   
+    button(class="btn btn-danger m-2", onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2", onclick="cancel()") Cancel
+ 
+    script.
+      function cancel() {
+        // Go back to the home page for the watercraft collection
+        window.location.href='/minerals'
+      }
+    script.
+      function deleteOnid() {
+        console.log("starting delete")
+        // delete first
+        fetch(actionid, {
+          method: 'DELETE' // Don't need a body for the delete
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded")
+          window.location.href='/minerals'
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Delete failed " + error )
+        });
+      }
