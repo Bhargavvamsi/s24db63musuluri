@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  - let id = toShow._id
+  - let Mineral_name = toShow.Mineral_name
+  - let Color = toShow.Color
+  - let Hardness_level = toShow.Hardness_level
+  div
+    div.row
+      div(class='mineralsAttr mr-3') minerals ID is:
+        div #{id}
+    div.row
+      div(class='mineralsAttr mr-3') Mineral_name is:
+        div #{Mineral_name}
+    div.row
+      div(class='mineralsAttr mr-3') Color is:
+        div #{Color}
+    div.row
+      div(class='mineralsAttr mr-3') Hardness_level is:
+        div #{Hardness_level}

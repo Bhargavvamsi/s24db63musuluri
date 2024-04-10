@@ -10,6 +10,8 @@ module.exports = router;
 var express = require('express');
 const minerals_controlers= require('../controllers/minerals');
 var router = express.Router();
-/* GET costumes */
+/* GET minerals */
 router.get('/', minerals_controlers.minerals_view_all_Page);
+/* GET detail minerals page */
+router.get('/detail', minerals_controlers.minerals_view_one_Page);
 module.exports = router;
