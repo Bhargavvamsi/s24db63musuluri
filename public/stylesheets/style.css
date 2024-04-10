@@ -7,8 +7,22 @@ a {
   color: #00B7FF;
 }
 
+form {
+  width: 50%;
+  position: relative;
+  left: 100px;
+}
+
 .mineralsAttr {
   background-color: rgb(127, 227, 255);
   width: 150px;
+  display: inline-block;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 10px;
+ }
+
+ .btn {
+  margin-top: 5px;
  }
  

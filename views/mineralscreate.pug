@@ -5,14 +5,14 @@ block content
   form(id='mineralsForm', action="/resource/minerals" , method="POST")
     div.form-group
       label.mineralsAttr(for='Mineral_name') Mineral Name
-      input#Mineral_name(type='text', name='Mineral_name')
+      input#Mineral_name(type='text', name='Mineral_name', class='form-control')
     div.form-group
       label.mineralsAttr(for='length') Mineral Color
-      input#Color(type='text', name='Color')
+      input#Color(type='text', name='Color', class='form-control')
     div.form-group
       label.mineralsAttr(for='Hardness_level') Hardness_level
-      input#Hardness_level(type='number', name='Hardness_level')
-    input(type="submit")
+      input#Hardness_level(type='number', name='Hardness_level', class='form-control')
+    input(type="submit", class='btn btn-primary')
     script.
       document.forms['mineralsForm'].addEventListener('submit', (event) => {
         event.preventDefault();

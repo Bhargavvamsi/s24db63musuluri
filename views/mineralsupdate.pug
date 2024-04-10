@@ -1,39 +1,42 @@
 extends layout
 block content
   h1= title
-  - let mineralsid = toShow._id
-  - let Mineral_name = toShow.Mineral_name
-  - let Color = toShow.Color
-  - let Hardness_level = toShow.Hardness_level
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{mineralsid}
-  - let actionid = "/resource/minerals/" + mineralsid
-  form(id='mineralsForm', action= actionid, method="PUT")
-    div.form-group
-      label.mineralsAttr(for='Mineral_name') Mineral name
-      input#Mineral_name(type='text', name='Mineral_name', value= Mineral_name )
-    div.form-group
-      label.mineralsAttr(for='Color') Mineral Color
-      input#Color(type='text', name='Color', value= Color )
-    div.form-group
-      label.mineralsAttr(for='Hardness_level') Hardness_level
-      input#Hardness_level(type='number', name='Hardness_level', value= Hardness_level )
-    input(type="submit")
-  script.
-    document.forms['mineralsForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show user that form is being submitted
-      fetch(event.target.action, {
-        method: 'PUT',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.text(); //resp.json();or whatever the server sends
-      }).then((body) => {
-        alert("Update succeeded");
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Update failed: " + error);
+  if (toShow == null)
+    h2 No instance to update
+  else
+    - let mineralsid = toShow._id
+    - let Mineral_name = toShow.Mineral_name
+    - let Color = toShow.Color
+    - let Hardness_level = toShow.Hardness_level
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{mineralsid}
+    - let actionid = "/resource/minerals/" + mineralsid
+    form(id='mineralsForm', action= actionid, method="PUT")
+      div.form-group
+        label.mineralsAttr(for='Mineral_name') Mineral name
+        input#Mineral_name(type='text', name='Mineral_name', value= Mineral_name )
+      div.form-group
+        label.mineralsAttr(for='Color') Mineral Color
+        input#Color(type='text', name='Color', value= Color )
+      div.form-group
+        label.mineralsAttr(for='Hardness_level') Hardness_level
+        input#Hardness_level(type='number', name='Hardness_level', value= Hardness_level )
+      input(type="submit")
+    script.
+      document.forms['mineralsForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.text(); //resp.json();or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded");
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed: " + error);
+        });
       });
-    });
