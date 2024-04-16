@@ -31,9 +31,16 @@ block content
           method: 'PUT',
           body: new URLSearchParams(new FormData(event.target)) // event.target is the form
         }).then((resp) => {
+          if(resp.ok){
+            alert ("Mineral Updated Successfully")
+            document.getElementById('mineralsForm').reset()
+        }
+        else {
+            alert (" Failed to Update Mineral")
+        }
           return resp.text(); //resp.json();or whatever the server sends
         }).then((body) => {
-          alert("Update succeeded");
+        //  alert("Update succeeded");
           // TODO handle body
         }).catch((error) => {
           // TODO handle error
